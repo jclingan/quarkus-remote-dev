@@ -1,13 +1,13 @@
 # Quarkus Remote Development with minikube
 
-This project demonstrates how to use remote development using Kubernetese (minikube specifically).
+This project demonstrates how to use remote development using Kubernetes (minikube specifically).
 
 As a developer, you develop locally.
 Any changes made to source code,
 supporting configuration files, and even the
 pom.xml are synchronized with the pod (container) running the
 application.
-This provides a very productive developer experience
+This provides a very (surprisingly!) productive developer experience
 with the application running in a more production-like context  -
 Kubernetes.
 
@@ -96,7 +96,8 @@ Typically a Quarkus developer would run _mvn quarkus:dev_.
 However, for remote development,
 we need to invoke a slightly different 
 maven goal and point to the pod running the application.
-In a new terminal window, run the following:
+
+*In a new terminal window*, run the following:
 
 ```
 NODEPORT=`kubectl get svc devmode -o jsonpath='{.spec.ports[0].nodePort}'`

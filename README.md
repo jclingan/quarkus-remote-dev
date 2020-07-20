@@ -114,7 +114,9 @@ NODEPORT=`kubectl get svc devmode -o jsonpath='{.spec.ports[0].nodePort}'`
 curl http://`minikube ip`:$NODEPORT/hello
 ```
 
-The output should be _hello_.
+#The output should be _hello_.
+
+The output should be "whoami" output to help debug an issue.
 
 Test remote Live Coding.
 In src/main/java/org/acme/Hello.java, comment out  `return hello`

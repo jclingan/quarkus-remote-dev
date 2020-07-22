@@ -87,7 +87,7 @@ mvn \
 Optionally follow the log output to see output as code updatess are deployed.
 
 ```
-PODNAME=`kubectl get pods -l app.kubernetes.io/name=devmode -o jsonpath='{range .items[*]}{@.metadata.name}'`
+PODNAME=`kubectl get pods -l app.kubernetes.io/name=remotedev -o jsonpath='{range .items[*]}{@.metadata.name}'`
 
 kubectl logs $PODNAME --follow
 ```
@@ -100,7 +100,7 @@ maven goal and point to the pod running the application.
 *In a new terminal window*, run the following:
 
 ```
-NODEPORT=`kubectl get svc devmode -o jsonpath='{.spec.ports[0].nodePort}'`
+NODEPORT=`kubectl get svc remotedev -o jsonpath='{.spec.ports[0].nodePort}'`
 
 mvn quarkus:remote-dev -Dquarkus.live-reload.url=http://`minikube ip`:$NODEPORT
 ```
@@ -109,7 +109,7 @@ Open a new terminal window.
 Test the endpoint.
 
 ```
-NODEPORT=`kubectl get svc devmode -o jsonpath='{.spec.ports[0].nodePort}'`
+NODEPORT=`kubectl get svc remotedev -o jsonpath='{.spec.ports[0].nodePort}'`
 
 curl http://`minikube ip`:$NODEPORT/hello
 ```
@@ -127,4 +127,4 @@ Check the endpoint:
 curl http://`minikube ip`:$NODEPORT/hello
 ```
 
-The output should be the name of the pod, similar to _devmode-666b57b579-rbdxp_.
+The output should be the name of the pod, similar to _remotedev-666b57b579-rbdxp_.

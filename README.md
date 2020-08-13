@@ -8,7 +8,7 @@ supporting configuration files, and even the
 pom.xml are synchronized with the pod (container) running the
 application.
 This provides a very (surprisingly!) productive developer experience
-with the application running in a more production-like context  -
+with the application running in a more production-like context -
 Kubernetes.
 
 This feature requires no special tooling and minimal configuration.
@@ -25,15 +25,9 @@ Installation instructions >[here](https://kubernetes.io/docs/tasks/tools/install
 * JDK 11 (Likely to work with JDK 8, but I did not test it)
 * Maven 3.6.2+
 
-NOTE: There seems to be a bug in 1.6.0.Final, and 1.6.1.Final is not
-available as of this example.
-Therefore this example uses the master branch (999-SNAPSHOT).
-Even the snapshot contans an error with the remote jar file
-not having accesss to a file. It still _seems_ to work :-)
-
 ## How this "remote" example differs from local development
 
-*  The POM file adds the following maven dependencies:
+* The POM file adds the following maven dependencies:
    * `quarkus-kubernetes`: Enables Kubernetes deployment and Kubernetes deployment YAML customization using properties in
    _application.properties_.
    * `quarkus-minikube`: Customizes Kubernetes deployment YAML
@@ -119,7 +113,7 @@ curl http://`minikube ip`:$NODEPORT/hello
 The output should be "whoami" output to help debug an issue.
 
 Test remote Live Coding.
-In src/main/java/org/acme/Hello.java, comment out  `return hello`
+In src/main/java/org/acme/Hello.java, comment out `return hello`
 and uncomment `return System.getenv("HOSTNAME");`.
 Check the endpoint:
 
